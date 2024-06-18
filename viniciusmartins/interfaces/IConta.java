@@ -1,6 +1,7 @@
 package com.viniciusmartins.interfaces;
 
 import com.viniciusmartins.service.Conta;
+import com.viniciusmartins.service.ValidadorException;
 
 public interface IConta {
 
@@ -11,5 +12,7 @@ public interface IConta {
 	void transferir(double valor, Conta contaDestino);
 
 	void imprimirExtarto();
+	
+	Conta selecionarConta(int tipoConta) throws ValidadorException;
 
 }

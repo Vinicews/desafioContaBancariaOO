@@ -2,7 +2,7 @@ package com.viniciusmartins.service;
 
 import com.viniciusmartins.interfaces.IConta;
 
-public class Conta implements IConta {
+public abstract class Conta implements IConta {
 
 	private static int AGENCIAL_PADRAO = 1;
 	private static int SEQUENCIAL = 1;
@@ -11,9 +11,6 @@ public class Conta implements IConta {
 	protected double saldo = 0;
 
 
-
-
-	
 	public Conta() {
 		this.agencia = AGENCIAL_PADRAO;
 		this.numeroConta = SEQUENCIAL++;
@@ -38,7 +35,6 @@ public class Conta implements IConta {
 			this.saldo -= valor;
 
 		return this.saldo;
-
 	}
 
 	public double depositar(double valor) {
@@ -47,12 +43,12 @@ public class Conta implements IConta {
 	}
 
 	public void transferir(double valor, Conta contaDestino) {
-	    if (valor > saldo) {
-	        System.out.println("Saldo insuficiente.");
-	    } else {
-	        this.sacar(valor);
-	        contaDestino.depositar(valor);
-	    }
+		if (valor > saldo) {
+			System.out.println("Saldo insuficiente.");
+		} else {
+			this.sacar(valor);
+			contaDestino.depositar(valor);
+		}
 	}
 
 	protected void imprimirInfosComuns() {
@@ -63,7 +59,7 @@ public class Conta implements IConta {
 
 	@Override
 	public void imprimirExtarto() {
-		// TODO Auto-generated method stub
+		getSaldo();
 
 	}
 
@@ -77,6 +73,8 @@ public class Conta implements IConta {
 
 	public double getSaldo() {
 		return saldo;
+
 	}
+
 
 }
